@@ -2,20 +2,19 @@ package com.trybe.simuladordepix;
 
 import java.io.IOException;
 
+/**
+ * ProcessadorDePix.
+ */
+
 public class ProcessadorDePix {
 
   private final Servidor servidor;
+
 
   public ProcessadorDePix(Servidor servidor) {
     this.servidor = servidor;
   }
 
-  /**
-   * Valida se os valores de entrada para a operação de pix estão corretos.
-   * @param valor Valor em centavos a ser transferido.
-   * @param chave Chave Pix do beneficiário da transação.
-   * @throws ErroDePix   Erro de aplicação, caso ocorra qualquer inconformidade.
-   */
   /**
    * Executa a operação do pix. Aqui é implementada a lógica de negócio
    * sem envolver as interações do aplicativo com a pessoa usuária.
@@ -29,8 +28,11 @@ public class ProcessadorDePix {
 
   public void executarPix(int valor, String chave) throws ErroDePix, IOException {
 
-    if (valor <= 0) throw new ErroValorNaoPositivo();
-    if (chave == null || chave.isBlank()) throw new ErroChaveEmBranco();
+    if (valor <= 0) {
+      throw new ErroValorNaoPositivo();
+    } else if (chave == null || chave.isBlank()) {
+      throw new ErroChaveEmBranco();
+    }
 
     Conexao connection = null;
 

@@ -2,6 +2,10 @@ package com.trybe.simuladordepix;
 
 import java.io.IOException;
 
+/**
+ * ControladorDePix.
+ */
+
 public class ControladorDePix {
 
   private final ProcessadorDePix processadorDePix;
