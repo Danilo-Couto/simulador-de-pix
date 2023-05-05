@@ -1,5 +1,7 @@
 package com.trybe.simuladordepix;
 
+import java.io.IOException;
+
 public class Principal {
 
   /**
