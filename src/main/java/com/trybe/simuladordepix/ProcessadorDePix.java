@@ -34,10 +34,7 @@ public class ProcessadorDePix {
       throw new ErroChaveEmBranco();
     }
 
-    Conexao connection = null;
-
-    try {
-      connection = servidor.abrirConexao();
+    try (Conexao connection = servidor.abrirConexao()) {
       String response = connection.enviarPix(valor, chave);
 
       if (response.equals(CodigosDeRetorno.SALDO_INSUFICIENTE)) {
@@ -46,10 +43,6 @@ public class ProcessadorDePix {
         throw new ErroChaveNaoEncontrada();
       } else if (!response.equals(CodigosDeRetorno.SUCESSO)) {
         throw new ErroInterno();
-      }
-    } finally {
-      if (connection != null) {
-        connection.close();
       }
     }
   }
